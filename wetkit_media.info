@@ -36,4 +36,3 @@ features_exclude[dependencies][admin_views] = admin_views
 features_exclude[dependencies][views] = views
 features_exclude[variable][panelizer_defaults_taxonomy_term_media_file_tags] = panelizer_defaults_taxonomy_term_media_file_tags
 mtime = 1423591135
-project path = profiles/wetkit/modules/custom
