@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Wetkit Media feature.
+ */
+
+include_once 'wetkit_media.features.inc';
