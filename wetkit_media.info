@@ -1,7 +1,7 @@
 name = Wetkit Media
 core = 7.x
 package = WetKit
-version = 7.x-1.0-beta9
+version = 7.x-1.0-beta10
 project = wetkit_media
 dependencies[] = defaultconfig
 dependencies[] = i18n_taxonomy
@@ -37,3 +37,4 @@ features_exclude[dependencies][features] = features
 features_exclude[dependencies][metatag] = metatag
 features_exclude[dependencies][taxonomy] = taxonomy
 mtime = 1423591135
+project path = profiles/wetkit/modules/custom

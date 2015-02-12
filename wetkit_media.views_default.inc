@@ -25,6 +25,7 @@ function wetkit_media_views_default_views() {
   $handler->display->display_options['title'] = 'Wetkit Media Admin';
   $handler->display->display_options['css_class'] = 'admin-views-view';
   $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -230,6 +231,7 @@ function wetkit_media_views_default_views() {
   $handler->display->display_options['fields']['field_media_file_tags']['table'] = 'field_data_field_media_file_tags';
   $handler->display->display_options['fields']['field_media_file_tags']['field'] = 'field_media_file_tags';
   $handler->display->display_options['fields']['field_media_file_tags']['label'] = 'Tags';
+  $handler->display->display_options['fields']['field_media_file_tags']['group_column'] = 'entity_id';
   $handler->display->display_options['fields']['field_media_file_tags']['delta_offset'] = '0';
   /* Field: File: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
