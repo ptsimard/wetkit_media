@@ -366,6 +366,9 @@ function wetkit_media_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'wetkit-media-admin';
+
+  /* Display: Media browser tab */
+  $handler = $view->new_display('media_browser', 'Media browser tab', 'media_browser_1');
   $translatables['wetkit_media_admin'] = array(
     t('Master'),
     t('Wetkit Media Admin'),
@@ -399,6 +402,7 @@ function wetkit_media_views_default_views() {
 </ul>'),
     t('Name'),
     t('Page'),
+    t('Media browser tab'),
   );
   $export['wetkit_media_admin'] = $view;
 
