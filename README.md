@@ -1,2 +1,4 @@
-# wetkit_media
-Media support for WxT 4.x-dev
+WxT Webform
+=========
+Helps to manage media files for [Drupal WxT][drupalwxt].
+
