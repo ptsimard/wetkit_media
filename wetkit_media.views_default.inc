@@ -11,43 +11,40 @@ function wetkit_media_views_default_views() {
   $export = array();
 
   $view = new view();
-  $view->name = 'clone_of_administration_files';
-  $view->description = 'Find and manage files.';
-  $view->tag = 'admin';
+  $view->name = 'wetkit_media_admin';
+  $view->description = '';
+  $view->tag = 'default';
   $view->base_table = 'file_managed';
-  $view->human_name = 'Clone of Administration: Files';
+  $view->human_name = 'Wetkit Media Admin';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Files';
-  $handler->display->display_options['css_class'] = 'admin-views-view';
-  $handler->display->display_options['use_ajax'] = TRUE;
+  $handler->display->display_options['title'] = 'Wetkit Media Admin';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'menu';
+  $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '50';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['pager']['options']['quantity'] = '9';
-  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '100';
+  $handler->display->display_options['style_plugin'] = 'views_bootstrap_table_plugin_style';
   $handler->display->display_options['style_options']['columns'] = array(
     'views_bulk_operations' => 'views_bulk_operations',
     'filename' => 'filename',
+    'field_media_file_tags' => 'field_media_file_tags',
     'type' => 'type',
-    'name' => 'name',
     'filesize' => 'filesize',
+    'name' => 'name',
     'timestamp' => 'timestamp',
+    'usage' => 'usage',
     'edit' => 'edit',
     'delete' => 'delete',
+    'nothing' => 'nothing',
   );
-  $handler->display->display_options['style_options']['default'] = 'timestamp';
+  $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
     'views_bulk_operations' => array(
       'align' => '',
@@ -61,14 +58,12 @@ function wetkit_media_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
-    'type' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'asc',
+    'field_media_file_tags' => array(
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
-    'name' => array(
+    'type' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -82,15 +77,15 @@ function wetkit_media_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
-    'timestamp' => array(
+    'name' => array(
       'sortable' => 1,
-      'default_sort_order' => 'desc',
+      'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
-    'edit' => array(
-      'sortable' => 0,
+    'timestamp' => array(
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
@@ -103,16 +98,28 @@ function wetkit_media_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
+    'edit' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
     'delete' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'nothing' => array(
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
   );
-  $handler->display->display_options['style_options']['sticky'] = TRUE;
-  $handler->display->display_options['style_options']['empty_table'] = TRUE;
+  $handler->display->display_options['style_options']['bootstrap_styles'] = array(
+    'striped' => 0,
+    'bordered' => 0,
+    'hover' => 0,
+    'condensed' => 0,
+  );
   /* No results behavior: Global: Unfiltered text */
   $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['empty']['area_text_custom']['table'] = 'views';
@@ -123,7 +130,6 @@ function wetkit_media_views_default_views() {
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'file_managed';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
-  $handler->display->display_options['relationships']['uid']['label'] = 'user';
   /* Field: Bulk operations: File */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'file_managed';
@@ -139,8 +145,8 @@ function wetkit_media_views_default_views() {
       'selected' => 1,
       'postpone_processing' => 0,
       'skip_confirmation' => 0,
-      'override_label' => 1,
-      'label' => 'Archive',
+      'override_label' => 0,
+      'label' => '',
       'settings' => array(
         'scheme' => 'public',
         'temporary' => 1,
@@ -150,8 +156,15 @@ function wetkit_media_views_default_views() {
       'selected' => 1,
       'postpone_processing' => 0,
       'skip_confirmation' => 0,
-      'override_label' => 1,
-      'label' => 'Delete',
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::views_bulk_operations_delete_revision' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
     ),
     'action::views_bulk_operations_script_action' => array(
       'selected' => 0,
@@ -163,9 +176,9 @@ function wetkit_media_views_default_views() {
     'action::views_bulk_operations_modify_action' => array(
       'selected' => 1,
       'postpone_processing' => 0,
-      'skip_confirmation' => 1,
-      'override_label' => 1,
-      'label' => 'Change value',
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
       'settings' => array(
         'show_all_tokens' => 1,
         'display_values' => array(
@@ -196,12 +209,21 @@ function wetkit_media_views_default_views() {
       'override_label' => 0,
       'label' => '',
     ),
+    'action::pathauto_file_update_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
   );
   /* Field: File: Name */
   $handler->display->display_options['fields']['filename']['id'] = 'filename';
   $handler->display->display_options['fields']['filename']['table'] = 'file_managed';
   $handler->display->display_options['fields']['filename']['field'] = 'filename';
   $handler->display->display_options['fields']['filename']['label'] = 'Title';
+  $handler->display->display_options['fields']['filename']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['filename']['alter']['ellipsis'] = FALSE;
   /* Field: File: Media File Tags */
   $handler->display->display_options['fields']['field_media_file_tags']['id'] = 'field_media_file_tags';
   $handler->display->display_options['fields']['field_media_file_tags']['table'] = 'field_data_field_media_file_tags';
@@ -217,7 +239,6 @@ function wetkit_media_views_default_views() {
   $handler->display->display_options['fields']['filesize']['id'] = 'filesize';
   $handler->display->display_options['fields']['filesize']['table'] = 'file_managed';
   $handler->display->display_options['fields']['filesize']['field'] = 'filesize';
-  $handler->display->display_options['fields']['filesize']['empty'] = '0 bytes';
   /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
@@ -228,15 +249,14 @@ function wetkit_media_views_default_views() {
   $handler->display->display_options['fields']['timestamp']['id'] = 'timestamp';
   $handler->display->display_options['fields']['timestamp']['table'] = 'file_managed';
   $handler->display->display_options['fields']['timestamp']['field'] = 'timestamp';
-  $handler->display->display_options['fields']['timestamp']['label'] = 'Updated';
+  $handler->display->display_options['fields']['timestamp']['label'] = 'Uploaded';
   $handler->display->display_options['fields']['timestamp']['date_format'] = 'short';
   $handler->display->display_options['fields']['timestamp']['second_date_format'] = 'long';
   /* Field: File: Usage link */
   $handler->display->display_options['fields']['usage']['id'] = 'usage';
   $handler->display->display_options['fields']['usage']['table'] = 'file_managed';
   $handler->display->display_options['fields']['usage']['field'] = 'usage';
-  $handler->display->display_options['fields']['usage']['label'] = 'Used in';
-  $handler->display->display_options['fields']['usage']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['usage']['label'] = 'Used In';
   /* Field: File: Edit link */
   $handler->display->display_options['fields']['edit']['id'] = 'edit';
   $handler->display->display_options['fields']['edit']['table'] = 'file_managed';
@@ -250,10 +270,6 @@ function wetkit_media_views_default_views() {
   $handler->display->display_options['fields']['delete']['field'] = 'delete';
   $handler->display->display_options['fields']['delete']['label'] = '';
   $handler->display->display_options['fields']['delete']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['delete']['alter']['text'] = '<ul class="links inline">
-<li>[edit]</li>
-<li>[delete]</li>
-</ul>';
   $handler->display->display_options['fields']['delete']['element_label_colon'] = FALSE;
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
@@ -264,30 +280,38 @@ function wetkit_media_views_default_views() {
 <li>[edit]</li>
 <li>[delete]</li>
 </ul>';
-  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  /* Filter criterion: File: Name */
-  $handler->display->display_options['filters']['filename']['id'] = 'filename';
-  $handler->display->display_options['filters']['filename']['table'] = 'file_managed';
-  $handler->display->display_options['filters']['filename']['field'] = 'filename';
-  $handler->display->display_options['filters']['filename']['operator'] = 'contains';
-  $handler->display->display_options['filters']['filename']['group'] = 1;
-  $handler->display->display_options['filters']['filename']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['filename']['expose']['operator_id'] = 'filename_op';
-  $handler->display->display_options['filters']['filename']['expose']['label'] = 'Name';
-  $handler->display->display_options['filters']['filename']['expose']['operator'] = 'filename_op';
-  $handler->display->display_options['filters']['filename']['expose']['identifier'] = 'filename';
-  $handler->display->display_options['filters']['filename']['expose']['remember'] = TRUE;
-  $handler->display->display_options['filters']['filename']['expose']['remember_roles'] = array(
+  /* Sort criterion: File: Upload date */
+  $handler->display->display_options['sorts']['timestamp']['id'] = 'timestamp';
+  $handler->display->display_options['sorts']['timestamp']['table'] = 'file_managed';
+  $handler->display->display_options['sorts']['timestamp']['field'] = 'timestamp';
+  $handler->display->display_options['sorts']['timestamp']['order'] = 'DESC';
+  /* Filter criterion: File: File name (filename_field) */
+  $handler->display->display_options['filters']['filename_field_value']['id'] = 'filename_field_value';
+  $handler->display->display_options['filters']['filename_field_value']['table'] = 'field_data_filename_field';
+  $handler->display->display_options['filters']['filename_field_value']['field'] = 'filename_field_value';
+  $handler->display->display_options['filters']['filename_field_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['filename_field_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['filename_field_value']['expose']['operator_id'] = 'filename_field_value_op';
+  $handler->display->display_options['filters']['filename_field_value']['expose']['label'] = 'Name';
+  $handler->display->display_options['filters']['filename_field_value']['expose']['operator'] = 'filename_field_value_op';
+  $handler->display->display_options['filters']['filename_field_value']['expose']['identifier'] = 'filename_field_value';
+  $handler->display->display_options['filters']['filename_field_value']['expose']['remember'] = TRUE;
+  $handler->display->display_options['filters']['filename_field_value']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
+    4 => 0,
   );
+  $handler->display->display_options['filters']['filename_field_value']['expose']['autocomplete_items'] = '10';
+  $handler->display->display_options['filters']['filename_field_value']['expose']['autocomplete_min_chars'] = '0';
+  $handler->display->display_options['filters']['filename_field_value']['expose']['autocomplete_raw_suggestion'] = 1;
+  $handler->display->display_options['filters']['filename_field_value']['expose']['autocomplete_raw_dropdown'] = 1;
+  $handler->display->display_options['filters']['filename_field_value']['expose']['autocomplete_dependent'] = 0;
   /* Filter criterion: File: Media File Tags (field_media_file_tags) */
   $handler->display->display_options['filters']['field_media_file_tags_tid']['id'] = 'field_media_file_tags_tid';
   $handler->display->display_options['filters']['field_media_file_tags_tid']['table'] = 'field_data_field_media_file_tags';
   $handler->display->display_options['filters']['field_media_file_tags_tid']['field'] = 'field_media_file_tags_tid';
   $handler->display->display_options['filters']['field_media_file_tags_tid']['value'] = '';
-  $handler->display->display_options['filters']['field_media_file_tags_tid']['group'] = 1;
   $handler->display->display_options['filters']['field_media_file_tags_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_media_file_tags_tid']['expose']['operator_id'] = 'field_media_file_tags_tid_op';
   $handler->display->display_options['filters']['field_media_file_tags_tid']['expose']['label'] = 'Tags';
@@ -304,17 +328,18 @@ function wetkit_media_views_default_views() {
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'file_managed';
   $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['group'] = 1;
   $handler->display->display_options['filters']['type']['exposed'] = TRUE;
   $handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
   $handler->display->display_options['filters']['type']['expose']['label'] = 'Type';
   $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
   $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
   $handler->display->display_options['filters']['type']['expose']['remember'] = TRUE;
+  $handler->display->display_options['filters']['type']['expose']['multiple'] = TRUE;
   $handler->display->display_options['filters']['type']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
+    4 => 0,
   );
   /* Filter criterion: User: Name */
   $handler->display->display_options['filters']['uid']['id'] = 'uid';
@@ -322,10 +347,9 @@ function wetkit_media_views_default_views() {
   $handler->display->display_options['filters']['uid']['field'] = 'uid';
   $handler->display->display_options['filters']['uid']['relationship'] = 'uid';
   $handler->display->display_options['filters']['uid']['value'] = '';
-  $handler->display->display_options['filters']['uid']['group'] = 1;
   $handler->display->display_options['filters']['uid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['uid']['expose']['operator_id'] = 'uid_op';
-  $handler->display->display_options['filters']['uid']['expose']['label'] = 'User';
+  $handler->display->display_options['filters']['uid']['expose']['label'] = 'Author';
   $handler->display->display_options['filters']['uid']['expose']['operator'] = 'uid_op';
   $handler->display->display_options['filters']['uid']['expose']['identifier'] = 'uid';
   $handler->display->display_options['filters']['uid']['expose']['remember'] = TRUE;
@@ -333,17 +357,15 @@ function wetkit_media_views_default_views() {
     2 => '2',
     1 => 0,
     3 => 0,
+    4 => 0,
   );
 
-  /* Display: System */
-  $handler = $view->new_display('system', 'System', 'system_1');
-  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
-  $handler->display->display_options['hide_admin_links'] = TRUE;
-  $handler->display->display_options['defaults']['access'] = FALSE;
-  $handler->display->display_options['path'] = 'admin/content/file';
-  $translatables['clone_of_administration_files'] = array(
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'wetkit-media-admin';
+  $translatables['wetkit_media_admin'] = array(
     t('Master'),
-    t('Files'),
+    t('Wetkit Media Admin'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -358,29 +380,24 @@ function wetkit_media_views_default_views() {
     t('next ›'),
     t('last »'),
     t('No files available.'),
-    t('user'),
+    t('User who uploaded'),
     t('- Choose an operation -'),
-    t('Archive'),
-    t('Delete'),
-    t('Change value'),
     t('Title'),
     t('Tags'),
     t('Type'),
     t('Size'),
-    t('0 bytes'),
     t('Author'),
-    t('Updated'),
-    t('Used in'),
+    t('Uploaded'),
+    t('Used In'),
+    t('Operations'),
     t('<ul class="links inline">
 <li>[edit]</li>
 <li>[delete]</li>
 </ul>'),
-    t('Operations'),
     t('Name'),
-    t('User'),
-    t('System'),
+    t('Page'),
   );
-  $export['clone_of_administration_files'] = $view;
+  $export['wetkit_media_admin'] = $view;
 
   return $export;
 }
