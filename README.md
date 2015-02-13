@@ -13,7 +13,9 @@ Key Features
 
 
 Further integration possible with a few simple manual steps :
- - Add media tags column to the main files administration page (admin/content/file)
+* Add media tags column to the main files administration page (admin/content/file)
+  * Edit the View called Administration: Files (/admin/structure/views/view/admin_views_file/edit)
+  * Add the field File: Media File Tags
  - Add wetkit-media-admin view to the Media browser
 
 
