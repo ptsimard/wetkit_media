@@ -20,9 +20,12 @@ Key Features
 * Add media tags to the default files administration page (/admin/content/file).
   * Edit the View called Administration: Files (/admin/structure/views/view/admin_views_file/edit).
   * Add the new Field called <i>File: Media File Tags</i>.
-    * Configure Field : 
-      * Label = Tags
-      * Formatter = Plain text
+  * Select the option to Autocomplete, then click Apply and Continue
+    * Check the option Expose this filter to visitors, to allow them to change it
+    * Label = Tags
+    * Check the option to Expose operator
+    * Check the option to Allow multiple selections
+    * Check the option to Remember the last selection
   * Rearrange the fields, place <i>File: Media File Tags (Tags)</i> in between <i>File: Name (Title)</i> and <i>File: Type (Type)</i>
 * Add wetkit-media-admin view to the Media browser
 
