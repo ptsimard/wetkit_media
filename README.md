@@ -14,14 +14,16 @@ Key Features
 * Can be easily integrated with the Media Browser.
 
 
-Further integration possible with a few simple manual steps :
+<b>Further integration possible with a few simple manual steps</b>
+
+
 * Add media tags to the default files administration page (/admin/content/file).
   * Edit the View called Administration: Files (/admin/structure/views/view/admin_views_file/edit).
   * Add the new Field called <i>File: Media File Tags</i>.
     * Configure Field : 
       * Label = Tags
       * Formatter = Plain text
-    * Rearrange the fields, place <i>File: Media File Tags (Tags)</i> in between <i>File: Name (Title)</i> and <i>File: Type (Type)</i>
+  * Rearrange the fields, place <i>File: Media File Tags (Tags)</i> in between <i>File: Name (Title)</i> and <i>File: Type (Type)</i>
 * Add wetkit-media-admin view to the Media browser
 
 
