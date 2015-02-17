@@ -22,7 +22,7 @@ Key Features
   * Add the new Field called <i>File: Media File Tags</i>, then click <b>Add and configure fields</b>.
     * Reduce the Label text to just <i>Tags</i>.
     * Uncheck <i>Place a colon after the label</i>.
-    * Formatter = Plain text
+    * Change Formatter to <i>Plain text</i>, then click <b>Apply</b>
   * Rearrange the fields, place <i>File: Media File Tags (Tags)</i> in between <i>File: Name (Title)</i> and <i>File: Type (Type)</i>
 
 * Add a Filter criteria
