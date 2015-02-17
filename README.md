@@ -18,7 +18,7 @@ Key Features
 <b>Further integration possible with a few simple manual steps</b>
 
 
-1) Add media tags to the default files administration page (/admin/content/file).
+Add media tags to the default files administration page (/admin/content/file).
  * Edit the View called <i>Administration: Files</i> (/admin/structure/views/view/admin_views_file/edit).
    * Add the new Field called <i>File: Media File Tags</i>, then click <b>Add and configure fields</b>.
      * Shorten the Label text to only <i>Tags</i>.
@@ -36,8 +36,6 @@ Key Features
      * Check the option to <i>Remember the last selection</i>, then click <b>Apply</b>.
  * Complete the changes to Files admin page by clicking on <b>Save</b> in the top right corner of the View.
 
-
-2) Add wetkit-media-admin view to the Media browser
 
 
 <!-- Links Referenced -->
