@@ -10,15 +10,16 @@ Key Features
 * Creates a new taxonomy called <i>Media File Tags</i>.
 * Adds an autocomplete term reference field <i>Media File Tags</i> to all file types. (Image, Video, Audio, Document, and WetKit Video)
 * Creates a new files administration View page (wetkit-media-admin) with <i>Media File Tags</i> displayed and searchable.
-* Can be easily integrated with the default files administration View page.
-* Can be easily integrated with the Media Browser.
+* Integrates with the WYSIWYG Media Browser.
+* Can be easily integrated with the default Files administration View page.
+
 
 
 <b>Further integration possible with a few simple manual steps</b>
 
 
 1) Add media tags to the default files administration page (/admin/content/file).
- * Edit the View called Administration: Files (/admin/structure/views/view/admin_views_file/edit).
+ * Edit the View called <i>Administration: Files</i> (/admin/structure/views/view/admin_views_file/edit).
    * Add the new Field called <i>File: Media File Tags</i>, then click <b>Add and configure fields</b>.
      * Shorten the Label text to only <i>Tags</i>.
      * Uncheck <i>Place a colon after the label</i>.
