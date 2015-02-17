@@ -231,6 +231,7 @@ function wetkit_media_views_default_views() {
   $handler->display->display_options['fields']['field_media_file_tags']['table'] = 'field_data_field_media_file_tags';
   $handler->display->display_options['fields']['field_media_file_tags']['field'] = 'field_media_file_tags';
   $handler->display->display_options['fields']['field_media_file_tags']['label'] = 'Tags';
+  $handler->display->display_options['fields']['field_media_file_tags']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_media_file_tags']['group_column'] = 'entity_id';
   $handler->display->display_options['fields']['field_media_file_tags']['delta_offset'] = '0';
   /* Field: File: Type */
@@ -363,12 +364,14 @@ function wetkit_media_views_default_views() {
     4 => 0,
   );
 
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
+  /* Display: Wetkit Media Admin Page */
+  $handler = $view->new_display('page', 'Wetkit Media Admin Page', 'page');
+  $handler->display->display_options['display_description'] = 'Media administration page for WxT';
   $handler->display->display_options['path'] = 'wetkit-media-admin';
 
-  /* Display: Media browser tab */
-  $handler = $view->new_display('media_browser', 'Media browser tab', 'media_browser_1');
+  /* Display: WYSIWYG Media browser tab */
+  $handler = $view->new_display('media_browser', 'WYSIWYG Media browser tab', 'media_browser_1');
+  $handler->display->display_options['display_description'] = 'Wetkit Media Tags for the WYSIWYG';
   $translatables['wetkit_media_admin'] = array(
     t('Master'),
     t('Wetkit Media Admin'),
@@ -401,8 +404,10 @@ function wetkit_media_views_default_views() {
 <li>[delete]</li>
 </ul>'),
     t('Name'),
-    t('Page'),
-    t('Media browser tab'),
+    t('Wetkit Media Admin Page'),
+    t('Media administration page for WxT'),
+    t('WYSIWYG Media browser tab'),
+    t('Wetkit Media Tags for the WYSIWYG'),
   );
   $export['wetkit_media_admin'] = $view;
 
