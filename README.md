@@ -19,10 +19,10 @@ Key Features
 
 * Add media tags to the default files administration page (/admin/content/file).
   * Edit the View called Administration: Files (/admin/structure/views/view/admin_views_file/edit).
-     * Add the new Field called <i>File: Media File Tags</i>, then click <b>Add and configure fields</b>.
-       * Reduce the Label text to just <i>Tags</i>.
-       * Uncheck <i>Place a colon after the label</i>.
-       * Change Formatter to <i>Plain text</i>, then click <b>Apply</b>
+    * Add the new Field called <i>File: Media File Tags</i>, then click <b>Add and configure fields</b>.
+      * Reduce the Label text to just <i>Tags</i>.
+      * Uncheck <i>Place a colon after the label</i>.
+      * Change Formatter to <i>Plain text</i>, then click <b>Apply</b>
     * Rearrange the fields, place <i>File: Media File Tags</i> in between <i>File: Name Title</i> and <i>File: Type Type</i>
 
   * Add a Filter criteria
