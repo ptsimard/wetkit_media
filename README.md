@@ -15,10 +15,7 @@ Key Features
 
 
 
-<b>Further integration possible with a few simple manual steps</b>
-
-
-Add media tags to the default files administration page (/admin/content/file).
+<b>Tip:</b> To add media tags to the default files administration page (/admin/content/file).
  * Edit the View called <i>Administration: Files</i> (/admin/structure/views/view/admin_views_file/edit).
    * Add the new Field called <i>File: Media File Tags</i>, then click <b>Add and configure fields</b>.
      * Shorten the Label text to only <i>Tags</i>.
