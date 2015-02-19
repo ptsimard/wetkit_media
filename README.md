@@ -1,7 +1,7 @@
 WxT Media
 =========
 
-Assisting with the management of media files in [Drupal WxT][drupalwxt].
+Improves the management of media files in [Drupal WxT][drupalwxt].
 
 Key Features
 ------------
