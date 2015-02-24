@@ -231,7 +231,6 @@ function wetkit_media_views_default_views() {
   $handler->display->display_options['fields']['field_media_file_tags']['table'] = 'field_data_field_media_file_tags';
   $handler->display->display_options['fields']['field_media_file_tags']['field'] = 'field_media_file_tags';
   $handler->display->display_options['fields']['field_media_file_tags']['label'] = 'Tags';
-  $handler->display->display_options['fields']['field_media_file_tags']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_media_file_tags']['group_column'] = 'entity_id';
   $handler->display->display_options['fields']['field_media_file_tags']['delta_offset'] = '0';
   /* Field: File: Type */
@@ -332,7 +331,9 @@ function wetkit_media_views_default_views() {
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'file_managed';
   $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'image' => 'image',
+  );
   $handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
   $handler->display->display_options['filters']['type']['expose']['label'] = 'Type';
   $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
@@ -364,14 +365,273 @@ function wetkit_media_views_default_views() {
     4 => 0,
   );
 
-  /* Display: Wetkit Media Admin Page */
-  $handler = $view->new_display('page', 'Wetkit Media Admin Page', 'page');
-  $handler->display->display_options['display_description'] = 'Media administration page for WxT';
+  /* Display: Wetkit Media Admin */
+  $handler = $view->new_display('page', 'Wetkit Media Admin', 'page');
   $handler->display->display_options['path'] = 'wetkit-media-admin';
 
-  /* Display: WYSIWYG Media browser tab */
-  $handler = $view->new_display('media_browser', 'WYSIWYG Media browser tab', 'media_browser_1');
-  $handler->display->display_options['display_description'] = 'Wetkit Media Tags for the WYSIWYG';
+  /* Display: Wetkit Images Admin */
+  $handler = $view->new_display('page', 'Wetkit Images Admin', 'page_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Wetkit Images Admin';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_bootstrap_table_plugin_style';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'views_bulk_operations' => 'views_bulk_operations',
+    'filename' => 'filename',
+    'field_media_file_tags' => 'field_media_file_tags',
+    'field_file_image_alt_text' => 'field_file_image_alt_text',
+    'field_file_image_title_text' => 'field_file_image_title_text',
+    'filesize' => 'filesize',
+    'name' => 'name',
+    'timestamp' => 'timestamp',
+    'usage' => 'usage',
+    'edit' => 'edit',
+    'delete' => 'delete',
+    'nothing' => 'nothing',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'views_bulk_operations' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'filename' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_media_file_tags' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_file_image_alt_text' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_file_image_title_text' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'filesize' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'name' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'timestamp' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'usage' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'edit' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'delete' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'nothing' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['bootstrap_styles'] = array(
+    'striped' => 0,
+    'bordered' => 0,
+    'hover' => 0,
+    'condensed' => 0,
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Bulk operations: File */
+  $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
+  $handler->display->display_options['fields']['views_bulk_operations']['label'] = '';
+  $handler->display->display_options['fields']['views_bulk_operations']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '0';
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 1;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['force_single'] = 0;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['entity_load_capacity'] = '10';
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_operations'] = array(
+    'action::views_bulk_operations_archive_action' => array(
+      'selected' => 1,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+      'settings' => array(
+        'scheme' => 'public',
+        'temporary' => 1,
+      ),
+    ),
+    'action::views_bulk_operations_delete_item' => array(
+      'selected' => 1,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::views_bulk_operations_delete_revision' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::views_bulk_operations_script_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::views_bulk_operations_modify_action' => array(
+      'selected' => 1,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+      'settings' => array(
+        'show_all_tokens' => 1,
+        'display_values' => array(
+          '_all_' => '_all_',
+        ),
+      ),
+    ),
+    'action::views_bulk_operations_argument_selector_action' => array(
+      'selected' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+      'settings' => array(
+        'url' => '',
+      ),
+    ),
+    'action::system_send_email_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::panelizer_set_status_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::pathauto_file_update_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+  );
+  /* Field: File: Name */
+  $handler->display->display_options['fields']['filename']['id'] = 'filename';
+  $handler->display->display_options['fields']['filename']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['filename']['field'] = 'filename';
+  $handler->display->display_options['fields']['filename']['label'] = 'Title';
+  $handler->display->display_options['fields']['filename']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['filename']['alter']['ellipsis'] = FALSE;
+  /* Field: File: Media File Tags */
+  $handler->display->display_options['fields']['field_media_file_tags']['id'] = 'field_media_file_tags';
+  $handler->display->display_options['fields']['field_media_file_tags']['table'] = 'field_data_field_media_file_tags';
+  $handler->display->display_options['fields']['field_media_file_tags']['field'] = 'field_media_file_tags';
+  $handler->display->display_options['fields']['field_media_file_tags']['label'] = 'Tags';
+  $handler->display->display_options['fields']['field_media_file_tags']['group_column'] = 'entity_id';
+  $handler->display->display_options['fields']['field_media_file_tags']['delta_offset'] = '0';
+  /* Field: File: Alt Text */
+  $handler->display->display_options['fields']['field_file_image_alt_text']['id'] = 'field_file_image_alt_text';
+  $handler->display->display_options['fields']['field_file_image_alt_text']['table'] = 'field_data_field_file_image_alt_text';
+  $handler->display->display_options['fields']['field_file_image_alt_text']['field'] = 'field_file_image_alt_text';
+  /* Field: File: Title Text */
+  $handler->display->display_options['fields']['field_file_image_title_text']['id'] = 'field_file_image_title_text';
+  $handler->display->display_options['fields']['field_file_image_title_text']['table'] = 'field_data_field_file_image_title_text';
+  $handler->display->display_options['fields']['field_file_image_title_text']['field'] = 'field_file_image_title_text';
+  /* Field: File: Size */
+  $handler->display->display_options['fields']['filesize']['id'] = 'filesize';
+  $handler->display->display_options['fields']['filesize']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['filesize']['field'] = 'filesize';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = 'Author';
+  /* Field: File: Upload date */
+  $handler->display->display_options['fields']['timestamp']['id'] = 'timestamp';
+  $handler->display->display_options['fields']['timestamp']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['timestamp']['field'] = 'timestamp';
+  $handler->display->display_options['fields']['timestamp']['label'] = 'Uploaded';
+  $handler->display->display_options['fields']['timestamp']['date_format'] = 'short';
+  $handler->display->display_options['fields']['timestamp']['second_date_format'] = 'long';
+  /* Field: File: Usage link */
+  $handler->display->display_options['fields']['usage']['id'] = 'usage';
+  $handler->display->display_options['fields']['usage']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['usage']['field'] = 'usage';
+  $handler->display->display_options['fields']['usage']['label'] = 'Used In';
+  /* Field: File: Edit link */
+  $handler->display->display_options['fields']['edit']['id'] = 'edit';
+  $handler->display->display_options['fields']['edit']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['edit']['field'] = 'edit';
+  $handler->display->display_options['fields']['edit']['label'] = '';
+  $handler->display->display_options['fields']['edit']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['edit']['element_label_colon'] = FALSE;
+  /* Field: File: Delete link */
+  $handler->display->display_options['fields']['delete']['id'] = 'delete';
+  $handler->display->display_options['fields']['delete']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['delete']['field'] = 'delete';
+  $handler->display->display_options['fields']['delete']['label'] = '';
+  $handler->display->display_options['fields']['delete']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['delete']['element_label_colon'] = FALSE;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = 'Operations';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<ul class="links inline">
+<li>[edit]</li>
+<li>[delete]</li>
+</ul>';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['path'] = 'wetkit-images-admin';
   $translatables['wetkit_media_admin'] = array(
     t('Master'),
     t('Wetkit Media Admin'),
@@ -404,10 +664,9 @@ function wetkit_media_views_default_views() {
 <li>[delete]</li>
 </ul>'),
     t('Name'),
-    t('Wetkit Media Admin Page'),
-    t('Media administration page for WxT'),
-    t('WYSIWYG Media browser tab'),
-    t('Wetkit Media Tags for the WYSIWYG'),
+    t('Wetkit Images Admin'),
+    t('Alt Text'),
+    t('Title Text'),
   );
   $export['wetkit_media_admin'] = $view;
 
