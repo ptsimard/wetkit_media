@@ -32,7 +32,7 @@ Add <i>Media File Tags</i> to the default files administration page (/admin/cont
      * Check the option to <i>Expose operator</i>.
      * Check the option to <i>Allow multiple selections</i>.
      * Check the option to <i>Remember the last selection</i>, then click <b>Apply</b>.
- * Complete the changes to Files admin page by clicking on <b>Save</b> in the top right corner of the View.
+ * Complete the changes by clicking on <b>Save</b> in the top right corner of the View.
 
 
 
