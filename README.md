@@ -6,10 +6,10 @@ Key Features
 -------------
 
 * Builds upon the [Media][media] module and Drupal core Files
-* Creates a new taxonomy called <i>Media File Tags</i>.
+* Adds a new taxonomy called <i>Media File Tags</i>.
 * Adds an autocomplete term reference field called <i>Media File Tags</i> to all of the file types. (Image, Video, Audio, Document, and WetKit Video)
-* Creates a new View page (wetkit-media-admin) for files administration with <i>Media File Tags</i> displayed and searchable.
-* Creates a new View page (wetkit-images-admin) for images administration with <i>Alt</i> and <i>Title</i> tags displayed.
+* Adds a new View page (wetkit-media-admin) for files administration with <i>Media File Tags</i> displayed and searchable.
+* Adds a new View page (wetkit-images-admin) for images administration with <i>Alt</i> and <i>Title</i> tags displayed.
 * Can be easily integrated with the default Files administration View page.
 
 
