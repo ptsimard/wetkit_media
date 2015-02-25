@@ -231,6 +231,7 @@ function wetkit_media_views_default_views() {
   $handler->display->display_options['fields']['field_media_file_tags']['table'] = 'field_data_field_media_file_tags';
   $handler->display->display_options['fields']['field_media_file_tags']['field'] = 'field_media_file_tags';
   $handler->display->display_options['fields']['field_media_file_tags']['label'] = 'Tags';
+  $handler->display->display_options['fields']['field_media_file_tags']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_media_file_tags']['group_column'] = 'entity_id';
   $handler->display->display_options['fields']['field_media_file_tags']['delta_offset'] = '0';
   /* Field: File: Type */
@@ -334,6 +335,85 @@ function wetkit_media_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'image' => 'image',
   );
+  $handler->display->display_options['filters']['type']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['label'] = 'Type';
+  $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
+  /* Filter criterion: User: Name */
+  $handler->display->display_options['filters']['uid']['id'] = 'uid';
+  $handler->display->display_options['filters']['uid']['table'] = 'users';
+  $handler->display->display_options['filters']['uid']['field'] = 'uid';
+  $handler->display->display_options['filters']['uid']['relationship'] = 'uid';
+  $handler->display->display_options['filters']['uid']['value'] = '';
+  $handler->display->display_options['filters']['uid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['uid']['expose']['operator_id'] = 'uid_op';
+  $handler->display->display_options['filters']['uid']['expose']['label'] = 'Author';
+  $handler->display->display_options['filters']['uid']['expose']['operator'] = 'uid_op';
+  $handler->display->display_options['filters']['uid']['expose']['identifier'] = 'uid';
+  $handler->display->display_options['filters']['uid']['expose']['remember'] = TRUE;
+  $handler->display->display_options['filters']['uid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+  );
+
+  /* Display: Wetkit Media Admin */
+  $handler = $view->new_display('page', 'Wetkit Media Admin', 'page');
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: File: File name (filename_field) */
+  $handler->display->display_options['filters']['filename_field_value']['id'] = 'filename_field_value';
+  $handler->display->display_options['filters']['filename_field_value']['table'] = 'field_data_filename_field';
+  $handler->display->display_options['filters']['filename_field_value']['field'] = 'filename_field_value';
+  $handler->display->display_options['filters']['filename_field_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['filename_field_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['filename_field_value']['expose']['operator_id'] = 'filename_field_value_op';
+  $handler->display->display_options['filters']['filename_field_value']['expose']['label'] = 'Name';
+  $handler->display->display_options['filters']['filename_field_value']['expose']['operator'] = 'filename_field_value_op';
+  $handler->display->display_options['filters']['filename_field_value']['expose']['identifier'] = 'filename_field_value';
+  $handler->display->display_options['filters']['filename_field_value']['expose']['remember'] = TRUE;
+  $handler->display->display_options['filters']['filename_field_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+  );
+  $handler->display->display_options['filters']['filename_field_value']['expose']['autocomplete_items'] = '10';
+  $handler->display->display_options['filters']['filename_field_value']['expose']['autocomplete_min_chars'] = '0';
+  $handler->display->display_options['filters']['filename_field_value']['expose']['autocomplete_raw_suggestion'] = 1;
+  $handler->display->display_options['filters']['filename_field_value']['expose']['autocomplete_raw_dropdown'] = 1;
+  $handler->display->display_options['filters']['filename_field_value']['expose']['autocomplete_dependent'] = 0;
+  /* Filter criterion: File: Media File Tags (field_media_file_tags) */
+  $handler->display->display_options['filters']['field_media_file_tags_tid']['id'] = 'field_media_file_tags_tid';
+  $handler->display->display_options['filters']['field_media_file_tags_tid']['table'] = 'field_data_field_media_file_tags';
+  $handler->display->display_options['filters']['field_media_file_tags_tid']['field'] = 'field_media_file_tags_tid';
+  $handler->display->display_options['filters']['field_media_file_tags_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_media_file_tags_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_media_file_tags_tid']['expose']['operator_id'] = 'field_media_file_tags_tid_op';
+  $handler->display->display_options['filters']['field_media_file_tags_tid']['expose']['label'] = 'Tags';
+  $handler->display->display_options['filters']['field_media_file_tags_tid']['expose']['operator'] = 'field_media_file_tags_tid_op';
+  $handler->display->display_options['filters']['field_media_file_tags_tid']['expose']['identifier'] = 'field_media_file_tags_tid';
+  $handler->display->display_options['filters']['field_media_file_tags_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+  );
+  $handler->display->display_options['filters']['field_media_file_tags_tid']['vocabulary'] = 'media_file_tags';
+  /* Filter criterion: File: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'file_managed';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'audio' => 'audio',
+    'document' => 'document',
+    'image' => 'image',
+    'video' => 'video',
+    'wetkit_video' => 'wetkit_video',
+  );
+  $handler->display->display_options['filters']['type']['exposed'] = TRUE;
   $handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
   $handler->display->display_options['filters']['type']['expose']['label'] = 'Type';
   $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
@@ -364,9 +444,6 @@ function wetkit_media_views_default_views() {
     3 => 0,
     4 => 0,
   );
-
-  /* Display: Wetkit Media Admin */
-  $handler = $view->new_display('page', 'Wetkit Media Admin', 'page');
   $handler->display->display_options['path'] = 'wetkit-media-admin';
 
   /* Display: Wetkit Images Admin */
@@ -575,6 +652,7 @@ function wetkit_media_views_default_views() {
   $handler->display->display_options['fields']['field_media_file_tags']['table'] = 'field_data_field_media_file_tags';
   $handler->display->display_options['fields']['field_media_file_tags']['field'] = 'field_media_file_tags';
   $handler->display->display_options['fields']['field_media_file_tags']['label'] = 'Tags';
+  $handler->display->display_options['fields']['field_media_file_tags']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_media_file_tags']['group_column'] = 'entity_id';
   $handler->display->display_options['fields']['field_media_file_tags']['delta_offset'] = '0';
   /* Field: File: Alt Text */
