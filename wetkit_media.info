@@ -1,5 +1,5 @@
 name = Wetkit Media
-description = Improves the management of media files in Drupal WxT.
+description = Improves the management of media files for the Drupal Web Experience Toolkit (WxT).
 core = 7.x
 package = WetKit
 version = 7.x-1.0
