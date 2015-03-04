@@ -5,7 +5,7 @@ Improves the management of media files in [Drupal WxT][drupalwxt].
 Key Features
 -------------
 
-* Builds upon the [Media][media] module and Drupal core Files
+* Builds upon the [Media][media] module and Drupal core Files.
 * Adds a new taxonomy called <i>Media File Tags</i>.
 * Adds an autocomplete term reference field called <i>Media File Tags</i> to all of the file types. (Image, Video, Audio, Document, and WetKit Video)
 * Adds a new View page (wetkit-media-admin) for files administration with <i>Media File Tags</i> displayed and searchable.
