@@ -24,7 +24,7 @@ Add <i>Media File Tags</i> to the default files administration page (/admin/cont
      * Change the Formatter to <i>Plain text</i>, then click <b>Apply</b>.
      * Rearrange the fields to place <i>File: Media File Tags</i> in between <i>File: Name Title</i> and <i>File: Type Type</i>
 
- * Add a Filter criteria
+ * Add a Filter criteria/
      * Add the new Field called <i>File: Media File Tags</i>, then click <b>Add and configure filter criteria</b>.
      * Select the option to <i>Autocomplete</i>, then click <b>Apply and Continue</b>.
      * Check the option <i>Expose this filter to visitors, to allow them to change it</i>.
